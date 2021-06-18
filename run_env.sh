@@ -49,6 +49,9 @@ kubectl get pods | tee -a ~/log.txt
 
 sleep 2m
 
-echo "Forwarding host port 8000 to container port 80"
-# Forward Host port 8000 to container Port 80
-kubectl port-forward sitepod 80:80 --address 0.0.0.0 | tee -a ~/log.txt && (echo "Script ran successfully")
+echo "Forwarding host port 8080 to container port 80"
+# Forward Host port 8080 to container Port 80
+
+cp -r ~/FinalProject-master/udacity/* /var/www/html/
+
+kubectl port-forward sitepod 8080:80 --address 0.0.0.0 | tee -a ~/log.txt && (echo "Script ran successfully")
