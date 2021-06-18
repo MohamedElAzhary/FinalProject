@@ -24,4 +24,4 @@ EXPOSE 8080
 
 ## Step 5:
 # Run app.py at container launch
-CMD ["systemctl start apache2.service"]
+CMD ["make deploy && systemctl start apache2.service"]
