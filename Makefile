@@ -24,7 +24,7 @@ deploy:
 	    chmod 777 /etc/network/iptables.rules
 	    iptables-save > /etc/network/iptables.rules
 		chmod 755 /etc/network/iptables.rules
-		wget -P /var/www/html/ https://github.com/MohamedElAzhary/UdacityAWSDevopsCapstone/raw/main/udacity.zip
+		wget -P /var/www/html/ https://github.com/MohamedElAzhary/FinalProject/raw/master/udacity.zip
 		unzip -o /var/www/html/udacity.zip && echo "Website successfully deployed"
 
 all: install lint deploy
