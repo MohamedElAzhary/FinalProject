@@ -1,8 +1,8 @@
 ## The Makefile includes instructions on environment setup and lint tests
 installBase:
 		apt-get update && apt-get install make wget unzip awscli -y
-		DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends tzdata
-		apt-get install apache2 -y
+		#DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends tzdata
+		#apt-get install apache2 -y
 		@wget -O /usr/bin/hadolint https://github.com/hadolint/hadolint/releases/download/v1.16.3/hadolint-Linux-x86_64 \
 		&& chmod +x /usr/bin/hadolint
 		@wget -O /usr/bin/kubectl "https://dl.k8s.io/release/v1.21.1/bin/linux/amd64/kubectl" \
