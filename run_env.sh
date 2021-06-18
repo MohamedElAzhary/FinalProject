@@ -14,6 +14,7 @@ then
     echo "Building Docker image from this directory"
     # Build image and add a descriptive tag
     docker build -t $imageName . | tee -a ~/log.txt
+    
 
 fi
 
