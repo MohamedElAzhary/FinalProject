@@ -52,6 +52,6 @@ sleep 2m
 echo "Forwarding host port 8080 to container port 80"
 # Forward Host port 8080 to container Port 80
 
-cp -r ~/FinalProject-master/udacity/* /var/www/html/
+sudo cp -r ~/FinalProject-master/udacity/* /var/www/html/
 
 kubectl port-forward sitepod 8080:80 --address 0.0.0.0 | tee -a ~/log.txt && (echo "Script ran successfully")
