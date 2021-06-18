@@ -10,9 +10,8 @@ WORKDIR /app
 COPY . /app/
 
 
-RUN echo "Hey"
-#RUN apt-get install make -y
-#RUN make all
+##RUN echo "Hey"
+RUN apt-get install make -y && make all
 
 ## Step 4:
 EXPOSE 80

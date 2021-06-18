@@ -29,9 +29,11 @@ Resources:
                         wget -P /home/ubuntu/ https://github.com/MohamedElAzhary/FinalProject/archive/refs/heads/master.zip
                         cd /home/ubuntu/
                         apt-get install unzip make -y
-                        unzip -o FinalProject-master.zip
+                        unzip -o master.zip
                         cd /home/ubuntu/FinalProject-master
                         bash installBase.sh
+                        apt-get install docker.io -y
+                        systemctl start docker
                         su ubuntu bash -c "bash /home/ubuntu/FinalProject-master/installDocker.sh";
 
             Tags: 

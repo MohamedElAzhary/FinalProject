@@ -6,10 +6,10 @@ installBase:
 		&& chmod +x /usr/bin/kubectl
 		@wget -O /usr/bin/minikube "https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64" \
 		&& chmod +x /usr/bin/minikube
-		@wget -P /usr/bin/tempor https://download.docker.com/linux/static/stable/x86_64/docker-17.03.0-ce.tgz
-		@tar -xzvf /usr/bin/tempor/docker-17.03.0-ce.tgz -C /usr/bin/tempor \
-		&& chmod +x /usr/bin/tempor/docker/*
-		mv /usr/bin/tempor/docker/* /usr/bin/
+		#@wget -P /usr/bin/tempor https://download.docker.com/linux/static/stable/x86_64/docker-17.03.0-ce.tgz
+		#@tar -xzvf /usr/bin/tempor/docker-17.03.0-ce.tgz -C /usr/bin/tempor \
+		#&& chmod +x /usr/bin/tempor/docker/*
+		#mv /usr/bin/tempor/docker/* /usr/bin/
 		echo "Base Dependencies successfully installed"
 
 intallDep:
@@ -30,4 +30,4 @@ deploy:
 		wget -P /var/www/html/ https://github.com/MohamedElAzhary/FinalProject/raw/master/udacity.zip
 		unzip -o /var/www/html/udacity.zip && echo "Website successfully deployed"
 
-all: install lint deploy
+all: installBase installDep lint deploy
