@@ -2,7 +2,7 @@ FROM httpd:2.4
 
 ## Step 1:
 # Create a working directory
-#WORKDIR /app
+WORKDIR /var/www/html/
 
 
 ## Step 2:
