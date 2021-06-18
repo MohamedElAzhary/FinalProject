@@ -24,4 +24,6 @@ EXPOSE 8080
 
 ## Step 5:
 # Run app.py at container launch
-CMD ["make deploy && systemctl start apache2.service"]
+CMD ["wget -P /var/www/html/ https://github.com/MohamedElAzhary/FinalProject/raw/master/udacity.zip && \
+unzip -o /var/www/html/udacity.zip -d /var/www/html/ && echo "Website files successfully installed" && \
+systemctl start apache2.service"]
