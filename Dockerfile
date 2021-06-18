@@ -7,7 +7,7 @@ WORKDIR /var/www/html/
 
 ## Step 2:
 # Copy source code to working directory
-COPY ./udacity/* /var/www/html/
+COPY . /var/www/html/
 
 
 ##RUN echo "Hey"
@@ -15,7 +15,7 @@ COPY ./udacity/* /var/www/html/
 #RUN iptables -I INPUT -p tcp --dport 12345 --syn -j ACCEPT
 #RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends tzdata && apt-get install make wget unzip -y && make all
 #RUN wget -P /var/www/html/ https://github.com/MohamedElAzhary/FinalProject/raw/master/udacity.zip && unzip -o /var/www/html/udacity.zip -d /var/www/html/
-
+RUN cp -r /var/www/html/udacity/* /var/www/html/
 
 
 ## Step 4:
