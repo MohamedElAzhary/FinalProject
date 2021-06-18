@@ -39,7 +39,7 @@ fi
 
 echo "Running image inside sitepod"
 # Run image inside a pod
-kubectl run sitepod --image=$imageName | tee -a ~/log.txt
+kubectl run sitepod --image=$imageName --privileged | tee -a ~/log.txt
 sleep 1m
 
 
