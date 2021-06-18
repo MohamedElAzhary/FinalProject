@@ -11,7 +11,7 @@ COPY . /app/
 
 
 ##RUN echo "Hey"
-RUN apt-get install make -y && make all
+RUN apt-get update && apt-get install make -y && make all
 
 ## Step 4:
 EXPOSE 80
