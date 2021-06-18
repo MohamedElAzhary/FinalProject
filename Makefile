@@ -1,5 +1,5 @@
 ## The Makefile includes instructions on environment setup and lint tests
-install:
+installBase:
 		@ wget -O /usr/bin/hadolint https://github.com/hadolint/hadolint/releases/download/v1.16.3/hadolint-Linux-x86_64 \
 		&& chmod +x /usr/bin/hadolint
 		@wget -O /usr/bin/kubectl "https://dl.k8s.io/release/v1.21.1/bin/linux/amd64/kubectl" \
@@ -10,8 +10,11 @@ install:
 		@tar -xzvf /usr/bin/tempor/docker-17.03.0-ce.tgz -C /usr/bin/tempor \
 		&& chmod +x /usr/bin/tempor/docker/*
 		mv /usr/bin/tempor/docker/* /usr/bin/
+		echo "Base Dependencies successfully installed"
+
+intallDep:
 		@apt-get update -y
-		@apt-get install unzip awscli apache2 make -y && echo "Dependencies successfully installed"
+		@apt-get install unzip awscli apache2 -y && echo "App Dependencies successfully installed"
 
 
 

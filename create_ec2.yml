@@ -26,11 +26,12 @@ Resources:
             UserData:   # User data
                     Fn::Base64: !Sub |
                         #!/bin/bash
-                        wget -P /home/ubuntu/ https://github.com/MohamedElAzhary/UdacityAWSDevopsCapstone/archive/refs/heads/main.zip
+                        wget -P /home/ubuntu/ https://github.com/MohamedElAzhary/FinalProject/archive/refs/heads/master.zip
                         cd /home/ubuntu/
-                        sudo apt install unzip
-                        unzip -o UdacityAWSDevopsCapstone-main.zip
-                        su ubuntu bash -c "bash /home/ubuntu/UdacityAWSDevopsCapstone-main/installDocker.sh";
+                        apt-get install unzip make -y
+                        unzip -o FinalProject-master.zip
+                        cd /home/ubuntu/FinalProject-master
+                        su ubuntu bash -c "bash /home/ubuntu/FinalProject-master/installDocker.sh";
 
             Tags: 
                 -   Key: "Name"

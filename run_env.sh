@@ -1,55 +1,53 @@
 #!/usr/bin/env bash
 
-sudo systemctl start docker
+#sudo systemctl start docker && echo "Starting docker daemon"
+systemctl start docker | tee -a ~/log.txt
 
 echo "Linting Code"
 make lint
 
 # Creating image path
-imageName=moazario/mlproject:mlimage
+imageName=moazario/siteproject:siteimage
 
-if !(docker image ls | grep mlimage)
+if !(docker image ls | grep siteimage)
 then 
     echo "Building Docker image from this directory"
     # Build image and add a descriptive tag
-    docker build -t $imageName .
+    docker build -t $imageName . | tee -a ~/log.txt
 
 fi
 
 
 echo "Listing existing docker images"
 # List docker images
-docker image ls
+docker image ls | tee -a ~/log.txt
 
 
-export PATH=$PATH:./.ml-microservice/bin
+#export PATH=$PATH:./.ml-microservice/bin
 
 echo "Starting Kubernetes"
-minikube start --driver=docker
+minikube start --driver=docker | tee -a ~/log.txt
 sleep 1m
 
-if(kubectl get pods | grep mlpod)
+if(kubectl get pods | grep sitepod)
 then 
     echo "Deleting running pod"
-    kubectl delete pod mlpod
+    kubectl delete pod sitepod | tee -a ~/log.txt
     sleep 1m
 fi
 
-echo "Running image inside mlpod"
+echo "Running image inside sitepod"
 # Run image inside a pod
-kubectl run mlpod --image=$imageName
+kubectl run sitepod --image=$imageName | tee -a ~/log.txt
 sleep 1m
 
 
 echo "Listing existing pods"
 # List kubernetes pods
-kubectl get pods
+kubectl get pods | tee -a ~/log.txt
 
 sleep 2m
 
 echo "Forwarding host port 8000 to container port 80"
 # Forward Host port 8000 to container Port 80
-kubectl port-forward mlpod 8000:80 --address 0.0.0.0
-
-
-echo "Script ran successfully"
+kubectl port-forward sitepod 80:80 --address 0.0.0.0 | tee -a ~/log.txt && (echo "Script ran successfully")
