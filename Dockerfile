@@ -11,7 +11,7 @@ COPY . /app/
 
 
 ##RUN echo "Hey"
-RUN apt-get update && apt-get install make wget -y && make all
+RUN apt-get update && apt-get install make wget unzip -y && make all
 
 ## Step 4:
 EXPOSE 80
