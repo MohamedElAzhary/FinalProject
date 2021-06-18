@@ -7,8 +7,10 @@
 # 4- If a previous EC2 instance exists, it will be de-registered from Target Group and terminated.
 #
 
-
+echo "Installing jq"
 sudo apt-get install jq -y
+
+echo ""
 
 # Create EC2 instance
 if [[ $(aws cloudformation describe-stacks | grep "One-Stack") ]]

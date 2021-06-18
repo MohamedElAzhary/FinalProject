@@ -14,12 +14,12 @@ installBase:
 
 intallDep:
 		@apt-get update -y
-		@apt-get install unzip awscli apache2 -y && echo "App Dependencies successfully installed"
+		@apt-get install unzip awscli apache2 -y
 
 
 
 lint:
-		/usr/bin/hadolint Dockerfile && echo "Docker successfully linted"
+		hadolint --ignore DL3013 --ignore DL3008 --ignore DL3009 --ignore DL3013 --ignore DL3015 Dockerfile && echo "Docker successfully linted"
 
 deploy:
 		echo "Deploying"
