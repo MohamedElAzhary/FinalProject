@@ -7,7 +7,7 @@ echo "Linting Code"
 make lint
 
 # Creating image path
-imageName=moazario/siteproject:siteimage
+imageName=siteimage
 
 if !(docker image ls | grep siteimage)
 then 
