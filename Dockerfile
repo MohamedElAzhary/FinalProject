@@ -29,5 +29,5 @@ EXPOSE 8080
 # Run app.py at container launch
 
 #CMD ["systemctl start apache2.service"]
-
+CMD ["httpd -D FOREGROUND"]
     
