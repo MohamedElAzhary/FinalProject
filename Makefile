@@ -20,12 +20,12 @@ lint:
 
 deploy:
 		echo "Deploying"
-		sudo iptables -I INPUT -p tcp --dport 12345 --syn -j ACCEPT
-	    sudo touch /etc/network/iptables.rules && \
-	    sudo chmod 777 /etc/network/iptables.rules
-	    sudo iptables-save > /etc/network/iptables.rules
-		sudo chmod 755 /etc/network/iptables.rules
-		sudo wget -P /var/www/html/ https://github.com/MohamedElAzhary/FinalProject/raw/master/udacity.zip
-		sudo unzip -o /var/www/html/udacity.zip -d /var/www/html/ && echo "Website files successfully installed"
+		#iptables -I INPUT -p tcp --dport 12345 --syn -j ACCEPT
+	    touch /etc/network/iptables.rules && \
+	    chmod 777 /etc/network/iptables.rules
+	    #sudo iptables-save > /etc/network/iptables.rules
+		chmod 755 /etc/network/iptables.rules
+		wget -P /var/www/html/ https://github.com/MohamedElAzhary/FinalProject/raw/master/udacity.zip
+		unzip -o /var/www/html/udacity.zip -d /var/www/html/ && echo "Website files successfully installed"
 
 all: installBase lint deploy
