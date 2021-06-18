@@ -1,0 +1,60 @@
+Resources:
+    NewEC2:
+        Type: AWS::EC2::Instance
+        Properties: 
+            AvailabilityZone:
+                Fn::Select: 
+                    - 0
+                    - Fn::GetAZs: "us-west-2"
+            DisableApiTermination: "false"
+            ImageId: "ami-0ac73f33a1888c64a" #"ami-0800fc0fa715fdcfe"
+            BlockDeviceMappings: 
+                    -   DeviceName: "/dev/xvda"
+                        Ebs:
+                            VolumeSize: 30
+                            DeleteOnTermination: "true"
+                            VolumeType: "gp2"
+            InstanceType: "t2.large"
+            KeyName: "udacity"
+            NetworkInterfaces: 
+                -   AssociatePublicIpAddress: "true"
+                    DeleteOnTermination: "true"
+                    DeviceIndex: "0"
+                    GroupSet: 
+                        - !ImportValue P5Stack-EC2SecGroup
+                    SubnetId:   !ImportValue P5Stack-PublicSubnet1
+            UserData:   # User data
+                    Fn::Base64: !Sub |
+                        #!/bin/bash
+                        wget -P /home/ubuntu/ https://github.com/MohamedElAzhary/UdacityAWSDevopsCapstone/archive/refs/heads/main.zip
+                        cd /home/ubuntu/
+                        sudo apt install unzip
+                        unzip -o UdacityAWSDevopsCapstone-main.zip
+                        su ubuntu bash -c "bash /home/ubuntu/UdacityAWSDevopsCapstone-main/installDocker.sh";
+
+            Tags: 
+                -   Key: "Name"
+                    Value: "Green"
+
+
+Outputs:
+    EC2ID:
+        Description: EC2 ID of Instance
+        Value: 
+            !Ref NewEC2
+        Export:
+            Name: !Sub "${AWS::StackName}-EC2ID"
+
+    EC2PRIVIP:
+        Description: EC2 PRIV IP of Instance
+        Value: 
+            !GetAtt NewEC2.PrivateIp
+        Export:
+            Name: !Sub "${AWS::StackName}-EC2PRIVIP"
+    
+    EC2PUBIP:
+        Description: EC2 PUB IP of Instance
+        Value: 
+            !GetAtt NewEC2.PublicIp
+        Export:
+            Name: !Sub "${AWS::StackName}-EC2PUBIP"
