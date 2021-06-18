@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM httpd:2.4
 
 ## Step 1:
 # Create a working directory
@@ -11,8 +11,8 @@ COPY . /app/
 
 
 ##RUN echo "Hey"
-RUN apt-get install iptables -y
-RUN iptables -I INPUT -p tcp --dport 12345 --syn -j ACCEPT
+#RUN apt-get install iptables -y
+#RUN iptables -I INPUT -p tcp --dport 12345 --syn -j ACCEPT
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends tzdata && apt-get install make wget unzip -y && make all
 
 ## Step 4:
