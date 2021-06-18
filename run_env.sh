@@ -27,7 +27,7 @@ docker image ls | tee -a ~/log.txt
 #export PATH=$PATH:./.ml-microservice/bin
 
 echo "Starting Kubernetes"
-minikube start --driver=docker | tee -a ~/log.txt
+minikube start --driver docker | tee -a ~/log.txt
 sleep 1m
 
 if(kubectl get pods | grep sitepod)
@@ -39,7 +39,7 @@ fi
 
 echo "Running image inside sitepod"
 # Run image inside a pod
-kubectl run sitepod --image=$imageName | tee -a ~/log.txt
+kubectl run sitepod --image $imageName | tee -a ~/log.txt
 sleep 1m
 
 
