@@ -1,5 +1,6 @@
 ## The Makefile includes instructions on environment setup and lint tests
 installBase:
+		apt-get update && apt-get install make wget unzip awscli apache2 -y
 		@wget -O /usr/bin/hadolint https://github.com/hadolint/hadolint/releases/download/v1.16.3/hadolint-Linux-x86_64 \
 		&& chmod +x /usr/bin/hadolint
 		@wget -O /usr/bin/kubectl "https://dl.k8s.io/release/v1.21.1/bin/linux/amd64/kubectl" \
@@ -10,7 +11,6 @@ installBase:
 		#@tar -xzvf /usr/bin/tempor/docker-17.03.0-ce.tgz -C /usr/bin/tempor \
 		#&& chmod +x /usr/bin/tempor/docker/*
 		#mv /usr/bin/tempor/docker/* /usr/bin/
-		apt-get update && apt-get install unzip awscli apache2 -y
 		echo "Base Dependencies successfully installed"
 
 lint:
@@ -24,6 +24,6 @@ deploy:
 	    iptables-save > /etc/network/iptables.rules
 		chmod 755 /etc/network/iptables.rules
 		wget -P /var/www/html/ https://github.com/MohamedElAzhary/FinalProject/raw/master/udacity.zip
-		unzip -o /var/www/html/udacity.zip && echo "Website files successfully installed"
+		unzip -o /var/www/html/udacity.zip -d /var/www/html/ && echo "Website files successfully installed"
 
 all: installBase lint deploy
