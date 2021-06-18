@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 #sudo systemctl start docker && echo "Starting docker daemon"
-systemctl start docker | tee -a ~/log.txt
+sudo systemctl start docker | tee -a ~/log.txt
 
 echo "Linting Code"
 make lint
