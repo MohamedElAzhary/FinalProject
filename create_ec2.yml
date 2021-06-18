@@ -9,7 +9,7 @@ Resources:
             DisableApiTermination: "false"
             ImageId: "ami-0ac73f33a1888c64a" #"ami-0800fc0fa715fdcfe"
             BlockDeviceMappings: 
-                    -   DeviceName: "/dev/xvda"
+                    -   DeviceName: "/dev/sda1"
                         Ebs:
                             VolumeSize: 30
                             DeleteOnTermination: "true"
