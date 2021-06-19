@@ -17,7 +17,7 @@ installBase:
 
 lint:
 		@#hadolint --ignore DL3013 --ignore DL3008 --ignore DL3009 --ignore DL3013 --ignore DL3015 Dockerfile && echo "Docker successfully linted"
-		hadolint --ignore DL3008 --ignore DL3009 Dockerfile && echo "Docker successfully linted"
+		hadolint --ignore DL3008 --ignore DL3009 Dockerfile && echo "Docker successfully linted s"
 
 deploy:
 		echo "Deploying"
