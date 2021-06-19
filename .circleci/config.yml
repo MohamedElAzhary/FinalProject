@@ -20,6 +20,7 @@ jobs:
             - checkout
             - run:
                 name: deploy
+                no_output_timeout: 20m
                 working_directory: ~/repo
                 command: |
                     apt-get update && apt-get install make unzip awscli wget -y && make installBase && bash bluegreen.sh
