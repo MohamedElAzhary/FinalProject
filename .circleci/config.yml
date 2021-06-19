@@ -31,4 +31,4 @@ workflows:
     jobs:
       - lint
       - deploy:
-        requires: [lint]
+            requires: [lint]
