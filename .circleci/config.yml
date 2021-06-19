@@ -11,7 +11,6 @@ jobs:
                 command: |
                     apt-get update && apt-get install make unzip awscli wget -y && make lint
             - persist_to_workspace:
-                root: .
                 paths:
                     -  ~/repo
 
@@ -28,7 +27,6 @@ jobs:
                 command: |
                     apt-get update && apt-get install make unzip awscli wget -y && bash bluegreen
             - persist_to_workspace:
-                root: .
                 paths:
                     -  ~/repo
 
