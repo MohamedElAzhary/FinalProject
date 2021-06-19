@@ -19,7 +19,7 @@ This project involves the following,
 - [x] Apache server is [repsonding](https://github.com/MohamedElAzhary/FinalProject/blob/master/WGET%20response.PNG?raw=true) with website html files.
 
 ### Access Project's website
-To access the project's website you can use the [Load-Balancer](P5loadbalancer-1df1c00992baffe9.elb.us-west-2.amazonaws.com) DNS Name
+To access the project's website you can use the [Load-Balancer](http://P5loadbalancer-1df1c00992baffe9.elb.us-west-2.amazonaws.com) DNS Name
 
 ### Traffic to Servers
 Clients send requests to the Load Balancer which will forward the incoming traffic to the Blue server.
