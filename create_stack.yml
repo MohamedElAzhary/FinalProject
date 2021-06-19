@@ -133,7 +133,7 @@ Resources:
     EC2HTTPrule:      # This SG is for the EC2 Instances
         Type: AWS::EC2::SecurityGroup
         Properties:
-            GroupDescription: "Allows inbound access on TCP port 8000 and 22 and unrestricted outbount access"
+            GroupDescription: "Allows inbound access on TCP port 80 and 22 and unrestricted outbount access"
             SecurityGroupEgress:    # Specifies outbound rule
                 -   CidrIp: "0.0.0.0/0"
                     FromPort: 0
@@ -156,7 +156,7 @@ Resources:
     LoadBalancerHTTPrule:       # This SG is for the Load Balancer
         Type: AWS::EC2::SecurityGroup
         Properties:
-            GroupDescription: "allow incoming tcp on port 8000, allow tcp port 80 to internal servers"
+            GroupDescription: "allow incoming tcp on port 80, allow tcp port 80 to internal servers"
             SecurityGroupIngress:    # Specifies inbound rule
                 -   CidrIp: "0.0.0.0/0"
                     FromPort: 80
@@ -170,7 +170,7 @@ Resources:
     EC2SecurityGroup:      # This SG is for the EC2 Instances
         Type: AWS::EC2::SecurityGroup
         Properties:
-            GroupDescription: "Allows inbound access on TCP port 8000 and 22 and unrestricted outbount access"
+            GroupDescription: "Allows inbound access on TCP port 80 and 22 and unrestricted outbount access"
             SecurityGroupEgress:    # Specifies outbound rule
                 -   CidrIp: "0.0.0.0/0"
                     FromPort: 0
@@ -178,9 +178,9 @@ Resources:
                     ToPort: 65535
             SecurityGroupIngress:    # Specifies inbound rule
                 -   CidrIp: "0.0.0.0/0"
-                    FromPort: 8000
+                    FromPort: 80
                     IpProtocol: "tcp"
-                    ToPort: 8000
+                    ToPort: 80
                 -   CidrIp: "0.0.0.0/0"
                     FromPort: 22
                     IpProtocol: "tcp"
@@ -237,7 +237,7 @@ Resources:
                 -   TargetGroupArn: !Ref "P5TargetGroup"
                     Type: "forward"
             LoadBalancerArn: !Ref "P5LoadBalancer"
-            Port: 8000    #integer
+            Port: 80    #integer
             Protocol: "TCP"
 
 
