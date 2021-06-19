@@ -71,9 +71,9 @@ then
     done
 fi
 
-echo "Waiting for 3 minutes till EC2 is created"
+echo "Waiting for 10 minutes till EC2 is created and Kubernetes run the Docker image"
 echo ""
-sleep 3m
+sleep 10m
 
 echo "Fetching $Order-Stack EC2 Outputs"
 # Register new EC2 at Target Group
