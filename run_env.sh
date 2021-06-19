@@ -39,7 +39,8 @@ fi
 
 echo "Running image inside sitepod"
 # Run image inside a pod
-kubectl run sitepod --image $imageName | tee -a ~/log.txt
+sudo kubectl run sitepod --image $imageName | tee -a ~/log.txt
+#kubectl run sitepod --image moazario/siteimage:siteimage
 sleep 1m
 
 
@@ -54,6 +55,6 @@ echo "Forwarding host port 8080 to container port 80"
 
 #sudo cp -r ~/FinalProject-master/udacity/* /var/www/html/
 
-kubectl port-forward sitepod 80:80 --address 0.0.0.0 | tee -a ~/log.txt && (echo "Script ran successfully")
+sudo kubectl port-forward sitepod 80:80 --address 0.0.0.0 | tee -a ~/log.txt && (echo "Script ran successfully")
 #kubectl port-forward sitepod 80:80 --address 0.0.0.0
 

@@ -21,6 +21,7 @@ lint:
 
 deploy:
 		echo "Deploying"
+		iptables -I INPUT -p tcp --dport 80 -j ACCEPT
 		#iptables -I INPUT -p tcp --dport 12345 --syn -j ACCEPT
 	    #touch /etc/network/iptables.rules && \
 	    #chmod 777 /etc/network/iptables.rules
