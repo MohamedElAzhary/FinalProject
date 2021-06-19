@@ -1,6 +1,10 @@
-[![MohamedElAzhary](https://circleci.com/gh/MohamedElAzhary/FinalProject.svg?style=svg)](https://app.circleci.com/pipelines/github/MohamedElAzhary/FinalProject)
+<p align="left">
+  <img src="https://github.com/MohamedElAzhary/FinalProject/blob/master/mbr-122x122.jpg?raw=true" width="80" title="my_photo">
+</p>
 
-### Final Project README file
+ [![MohamedElAzhary](https://circleci.com/gh/MohamedElAzhary/FinalProject.svg?style=svg)](https://app.circleci.com/pipelines/github/MohamedElAzhary/FinalProject)
+
+### Final Project README file 
 
 #### Project Brief
 This project is about hosting a website on an apache server using
