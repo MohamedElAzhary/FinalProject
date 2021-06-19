@@ -30,20 +30,23 @@ jobs:
                         make lint 
     deploy:
         docker:
-        # Use the same Docker base as the project
+            # Use the same Docker base as the project
             - image: httpd:2.4 #python:3.7.3-stretch
 
         working_directory: ~/repo
         steps:
             -   checkout
-
-            -   restore_cache:
-                keys:
-                    - v1-dependencies-{{ checksum "README.md" }}
-                    
-
+            # Download and cache dependencies
+           -   restore_cache:
+                    keys:
+                        - v1-dependencies-{{ checksum "README.md" }}
+                        # fallback to using the latest cache if no exact match is found
+                        #- v1-dependencies-
             -   run:
-                name: run lint
-                command: |
-                    apt-get update && apt-get install make unzip awscli -y
-                    bash bluegreen.sh 
+                    name: install dependencies
+                    command: |
+                        apt-get update && apt-get install make unzip awscli wget -y && bash bluegreen.sh
+            -   save_cache:
+                    paths:
+                        -   ~/repo
+                    key: v1-dependencies-{{ checksum "README.md" }}
