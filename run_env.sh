@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-#new
+#new file
 #sudo systemctl start docker && echo "Starting docker daemon"
 #sudo systemctl start docker | tee -a ~/log.txt
 
