@@ -19,4 +19,21 @@ This project involves the following,
 - [x] Apache server is [repsonding](https://github.com/MohamedElAzhary/FinalProject/blob/master/WGET%20response.PNG?raw=true) with website html files.
 
 ### Access Project's website
-To access the project's website you can use the [Load-Balancer]() DNS Name
+To access the project's website you can use the [Load-Balancer](P5loadbalancer-eaf570b874557611.elb.us-west-2.amazonaws.com) DNS Name
+
+### Traffic to Servers
+Clients send requests to the Load Balancer which will forward the incoming traffic to the Blue server.
+In case modifications were down to source code in the repo, after commiting and pushing to the repo,
+by running bluegreen.sh script as per the below steps, a new green server is started and registered at
+the target group of the load-balancer while the blue server gets deregisted from the load balancer target
+group, then the load-balancer redirects the incoming traffic to the green server which gets tagged as blue
+when it starts serving clients requests, this will achieve high operability and availability.
+
+### Steps to deploy infrastructure
+- Create the basic infrastructure {Security Groups, Load-Balancer, VPC, ... etc.}
+
+   ```bash create_infra.sh```
+
+- Deploy a new server {Green}
+
+  ```bash bluegreen.sh```
