@@ -33,6 +33,6 @@ EXPOSE 8080
 ## Step 5:
 # Run app.py at container launch
 
-CMD ["echo", "ServerStarted"]
+CMD ["apt-get", "install apache2 -y"]
 
     
