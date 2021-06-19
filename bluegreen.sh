@@ -88,7 +88,7 @@ do
     then
         EC2PRIVIP=$OVALUE
         echo "EC2PRIVIP in $Order-Stack is $EC2PRIVIP"
-        aws elbv2 register-targets --target-group-arn $LBTargetGroup --targets Id=$EC2PRIVIP,Port=8000,AvailabilityZone="us-west-2a"
+        aws elbv2 register-targets --target-group-arn $LBTargetGroup --targets Id=$EC2PRIVIP,Port=80,AvailabilityZone="us-west-2a"
         echo "$EC2PRIVIP from $Order-Stack is registered"
     fi
     
@@ -122,7 +122,7 @@ then
                 EC2PRIVIP=$OVALUE
                 echo "EC2PRIVIP in One-Stack is $EC2PRIVIP"
                 echo "Deregistering Old EC2 from Target Group $LBTargetGroup"
-                aws elbv2 deregister-targets --target-group-arn $LBTargetGroup --targets Id=$EC2PRIVIP,Port=8000,AvailabilityZone="us-west-2a"
+                aws elbv2 deregister-targets --target-group-arn $LBTargetGroup --targets Id=$EC2PRIVIP,Port=80,AvailabilityZone="us-west-2a"
                 echo "$EC2PRIVIP from One-Stack is deregistered"
             fi
             if [[ $OEXPORTNAME == "One-Stack-EC2ID" ]]
@@ -156,7 +156,7 @@ then
                 EC2PRIVIP=$OVALUE
                 echo "EC2PRIVIP in Two-Stack is $EC2PRIVIP"
                 echo "Deregistering Old EC2 from Target Group $LBTargetGroup"
-                aws elbv2 deregister-targets --target-group-arn $LBTargetGroup --targets Id=$EC2PRIVIP,Port=8000,AvailabilityZone="us-west-2a"
+                aws elbv2 deregister-targets --target-group-arn $LBTargetGroup --targets Id=$EC2PRIVIP,Port=80,AvailabilityZone="us-west-2a"
                 echo "$EC2PRIVIP from Two-Stack is deregistered"
             fi
             
