@@ -37,3 +37,8 @@ when it starts serving clients requests, this will achieve high operability and 
 - Deploy a new server {Green}
 
   ```bash bluegreen.sh```
+
+### CircleCI CI Server
+- CircleCI is used to lint the code
+- CircleCI is used to deploy the code after adding 
+  security keys to environment variables in CircleCI project settings.
