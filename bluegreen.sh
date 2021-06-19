@@ -8,7 +8,7 @@
 #
 
 echo "Installing jq"
-sudo apt-get install jq -y
+apt-get install jq -y
 
 echo ""
 
