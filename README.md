@@ -1,10 +1,14 @@
-This is my Final Project README file
+[![MohamedElAzhary](https://circleci.com/gh/MohamedElAzhary/DevOps_Microservices.svg?style=svg)](https://app.circleci.com/pipelines/github/MohamedElAzhary/DevOps_Microservices)
 
-Project Brief:
+### Final Project README file
+
+#### Project Brief
 This project is about hosting a website on an apache server using
 the Blue-Green deployment strategy.
 This project involves the following,
 - [x] Creating Github repository with project code.
-- Linting the project's Dockerfile on Circle CI
-- Building a Docker image of the apache server hosting the website
-- 
+- [x] Building a Docker image of the apache server hosting the website.
+- [x] Use DockerHub image repository to store Docker images.
+- [x] Dockerfile is linted using Hadolint on CircleCI.
+- [x] Blue-Green deployment is done using Cloudformation script.
+- [x] Docker container is deployed successfully to Kubernetes cluster.
