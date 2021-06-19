@@ -17,6 +17,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-ins
 RUN apt-get update && apt-get install make wget unzip apache2 --no-install-recommends -y
 RUN wget --no-check-certificate -P /var/www/html/ https://github.com/MohamedElAzhary/FinalProject/raw/master/udacity.zip && \
     unzip -o /var/www/html/udacity.zip -d /var/www/html/
+RUN systemctl start apache2.service
 
 #RUN wget -P /var/www/html/ https://github.com/MohamedElAzhary/FinalProject/raw/master/udacity.zip && unzip -o /var/www/html/udacity.zip -d /var/www/html/
 #RUN cp -r /var/www/html/udacity/* /var/www/html/
@@ -32,6 +33,6 @@ EXPOSE 8080
 ## Step 5:
 # Run app.py at container launch
 
-CMD ["systemctl start apache2.service"]
+CMD ["echo", "ServerStarted"]
 
     
