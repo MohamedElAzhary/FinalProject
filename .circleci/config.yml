@@ -21,7 +21,7 @@ jobs:
             -   run:
                     name: install dependencies
                     command: |
-                        make installBase
+                        apt-get install make unzip awscli wget -y && make installBase
             -   save_cache:
                     paths:
                         -   ~/repo
