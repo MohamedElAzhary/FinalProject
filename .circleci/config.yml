@@ -29,5 +29,5 @@ workflows:
   prod-deployment:
     jobs:
       - lint
-      - deploy
+      - deploy:
         requires: [lint]
