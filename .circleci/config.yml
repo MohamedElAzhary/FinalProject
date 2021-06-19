@@ -3,11 +3,11 @@ jobs:
     lint:
         docker:
             - image: httpd:2.4
+        working_directory: ~/repo
         steps:
             - checkout
             - run:
                 name: install dependencies
-                working_directory: ~/repo
                 command: |
                     apt-get update && apt-get install make unzip awscli wget -y && make lint
             
@@ -15,11 +15,12 @@ jobs:
     deploy:
         docker:
             - image: httpd:2.4
+        working_directory: ~/repo
         steps:
             - checkout
             - run:
                 name: install dependencies
-                working_directory: ./repo
+                working_directory: ~/repo
                 command: |
                     apt-get update && apt-get install make unzip awscli wget -y && bash bluegreen
             
