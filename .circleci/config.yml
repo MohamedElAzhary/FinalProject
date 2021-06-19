@@ -9,7 +9,7 @@ jobs:
             - run:
                 name: install dependencies
                 command: |
-                    apt-get update && apt-get install make unzip awscli wget -y && make lint
+                    apt-get update && apt-get install make unzip awscli wget -y && make installBase && make lint
             
 
     deploy:
@@ -22,7 +22,7 @@ jobs:
                 name: install dependencies
                 working_directory: ~/repo
                 command: |
-                    apt-get update && apt-get install make unzip awscli wget -y && bash bluegreen
+                    apt-get update && apt-get install make unzip awscli wget -y && make installBase && bash bluegreen
             
             
 workflows:
