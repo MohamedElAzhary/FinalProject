@@ -28,4 +28,4 @@ RUN wget --no-check-certificate -P /var/www/html/ https://github.com/MohamedElAz
 EXPOSE 80
 EXPOSE 8000
 EXPOSE 8080
-EXPOSAM
+EXPOSAMZ
