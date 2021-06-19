@@ -50,3 +50,9 @@ jobs:
                     paths:
                         -   ~/repo
                     key: v1-dependencies-{{ checksum "README.md" }}
+
+workflows:
+  prod-deployment:
+    jobs:
+      - build
+      - deploy
