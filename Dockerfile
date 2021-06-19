@@ -1,4 +1,5 @@
-FROM ubuntu:16.04
+FROM httpd:2.4
+#FROM ubuntu:16.04
 
 ## Step 1:
 # Create a working directory
@@ -7,7 +8,7 @@ FROM ubuntu:16.04
 
 ## Step 2:
 # Copy source code to working directory
-# COPY ./udacity/ /usr/local/apache2/htdocs/
+COPY ./udacity/ /usr/local/apache2/htdocs/
 
 
 ##RUN echo "Hey"
@@ -27,12 +28,3 @@ RUN wget --no-check-certificate -P /var/www/html/ https://github.com/MohamedElAz
 EXPOSE 80
 EXPOSE 8000
 EXPOSE 8080
-
-
-
-## Step 5:
-# Run app.py at container launch
-
-CMD ["apt-get", "install apache2 -y"]
-
-    
