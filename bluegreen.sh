@@ -10,7 +10,7 @@
 echo "Installing jq"
 apt-get install jq -y
 
-echo ""
+echo " "
 
 # Create EC2 instance
 if [[ $(aws cloudformation describe-stacks | grep "One-Stack") ]]
