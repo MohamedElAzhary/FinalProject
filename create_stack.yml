@@ -141,9 +141,9 @@ Resources:
                     ToPort: 65535
             SecurityGroupIngress:    # Specifies inbound rule
                 -   CidrIp: "0.0.0.0/0"
-                    FromPort: 8000
+                    FromPort: 80
                     IpProtocol: "tcp"
-                    ToPort: 8000
+                    ToPort: 80
                 -   CidrIp: "0.0.0.0/0"
                     FromPort: 22
                     IpProtocol: "tcp"
@@ -159,9 +159,9 @@ Resources:
             GroupDescription: "allow incoming tcp on port 8000, allow tcp port 80 to internal servers"
             SecurityGroupIngress:    # Specifies inbound rule
                 -   CidrIp: "0.0.0.0/0"
-                    FromPort: 8000
+                    FromPort: 80
                     IpProtocol: "tcp"
-                    ToPort: 8000
+                    ToPort: 80
             VpcId: !Ref "MyVPC"
             Tags: 
                 -   Key: "Name"
@@ -204,11 +204,11 @@ Resources:
         Type: AWS::ElasticLoadBalancingV2::TargetGroup
         Properties:
             HealthCheckIntervalSeconds: 10  #integer
-            HealthCheckPort: "8000"   #String
+            HealthCheckPort: "80"   #String
             HealthCheckProtocol: "TCP"
             UnhealthyThresholdCount: 3
             HealthyThresholdCount: 3    #integer
-            Port: 8000    #integer
+            Port: 80    #integer
             Protocol: "TCP"
             TargetType: "ip"
             VpcId: 
