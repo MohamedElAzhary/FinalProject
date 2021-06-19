@@ -7,9 +7,9 @@ jobs:
         steps:
             - checkout
             - run:
-                name: install dependencies
+                name: lint
                 command: |
-                    cd FinalProject && apt-get update && apt-get install make unzip awscli wget -y && make installBase && make lint
+                    apt-get update && apt-get install make unzip awscli wget -y && make installBase && make lint
             
 
     deploy:
@@ -19,10 +19,10 @@ jobs:
         steps:
             - checkout
             - run:
-                name: install dependencies
+                name: deploy
                 working_directory: ~/repo
                 command: |
-                    cd FinalProject && apt-get update && apt-get install make unzip awscli wget -y && make installBase && bash bluegreen
+                    apt-get update && apt-get install make unzip awscli wget -y && make installBase && bash bluegreen.sh
             
             
 workflows:
