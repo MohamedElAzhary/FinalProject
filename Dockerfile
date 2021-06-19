@@ -13,7 +13,7 @@ FROM ubuntu:16.04
 ##RUN echo "Hey"
 #RUN apt-get install iptables -y
 #RUN iptables -I INPUT -p tcp --dport 12345 --syn -j ACCEPT
-RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends tzdatamake 
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends tzdata
 RUN apt-get update && apt-get install make wget unzip apache2 --no-install-recommends -y
 RUN wget -P /var/www/html/ https://github.com/MohamedElAzhary/FinalProject/raw/master/udacity.zip && \
     unzip -o /var/www/html/udacity.zip -d /var/www/html/
