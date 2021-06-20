@@ -21,7 +21,7 @@ jobs:
           - docker/check
           - docker/build:
               image: moazario/siteimage
-              tag: siteimage
+              tag: 'siteimage'
           - docker/push:
               digest-path: /tmp/digest.txt
               image: moazario/siteimage
