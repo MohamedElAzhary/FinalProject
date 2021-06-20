@@ -20,10 +20,10 @@ jobs:
           - checkout
           - docker/check
           - docker/build:
-              image: moazario/siteimage:siteimage
+              image: moazario/siteimage
           - docker/push:
               digest-path: /tmp/digest.txt
-              image: moazario/siteimage:siteimage
+              image: moazario/siteimage
           - run:
               command: |
                 echo "Digest is: $(</tmp/digest.txt)"
