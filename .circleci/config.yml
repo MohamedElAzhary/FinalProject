@@ -48,6 +48,6 @@ workflows:
     jobs:
       - lint
       - buildandpush:
-        requires: [lint]
+            requires: [lint]
       - deploy:
             requires: [buildandpush]
