@@ -25,6 +25,7 @@ jobs:
           - docker/push:
               digest-path: /tmp/digest.txt
               image: moazario/siteimage
+              tag: 'siteimage'
           - run:
               command: |
                 echo "Digest is: $(</tmp/digest.txt)"
