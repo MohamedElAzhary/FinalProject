@@ -11,8 +11,9 @@ This project is about hosting a website on an apache server using
 the Blue-Green deployment strategy.
 This project involves the following,
 - [x] Creating [Github](https://github.com/MohamedElAzhary/FinalProject/) repository with project code.
+- [x] Implementing integration and deployment pipeline using [CircleCI](https://github.com/MohamedElAzhary/FinalProject/raw/master/Deployment%20Pipeline.PNG) by applying the following steps.
 - [x] Building a [Docker image](https://github.com/MohamedElAzhary/FinalProject/blob/master/Repo%20Building.PNG?raw=true) of the apache server hosting the website.
-- [x] Pushing [Docker image]() to DockerHub
+- [x] Pushing [Docker image](https://github.com/MohamedElAzhary/FinalProject/raw/master/DockerHub.PNG) to DockerHub
 - [x] Use [DockerHub](https://hub.docker.com/r/moazario/siteimage) image repository to store Docker images.
 - [x] Dockerfile is linted [successfully](https://github.com/MohamedElAzhary/FinalProject/blob/master/lint%20successfully.PNG?raw=true) using Hadolint on CircleCI.
 - [x] [Blue-Green](https://github.com/MohamedElAzhary/FinalProject/blob/master/bluegreen.PNG?raw=true) deployment is done using Cloudformation script.
