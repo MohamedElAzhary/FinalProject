@@ -46,7 +46,7 @@ jobs:
                 command: |
                     apt-get update && apt-get install make unzip awscli wget -y && make installBase && bash bluegreen.sh
 
-    createdeployment:
+    create-deployment:
         executor: aws-eks/python3
         parameters:
           cluster-name:
@@ -78,7 +78,7 @@ workflows:
             requires: [buildandpush]
       - aws-eks/create-cluster:
           cluster-name: eks-demo-deployment
-      - createdeployment:
+      - create-deployment:
           cluster-name: eks-demo-deployment
           requires:
             - aws-eks/create-cluster
