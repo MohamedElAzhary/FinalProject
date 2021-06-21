@@ -5,33 +5,6 @@ orbs:
   kubernetes: circleci/kubernetes@0.4.0
 
 jobs:
-
-workflows:
-  deployment:
-    jobs:
-      - aws-eks/create-cluster:
-          cluster-name: eks-demo-deployment
-      - create-deployment:
-          cluster-name: eks-demo-deployment
-          requires:
-            - aws-eks/create-cluster
-      - aws-eks/update-container-image:
-          cluster-name: eks-demo-deployment
-          resource-name: "deployment/nginx-deployment"
-          container-image-updates: "nginx=nginx:1.9.1"
-          record: true
-          requires:
-            - create-deployment
-      - aws-eks/delete-cluster:
-          cluster-name: eks-demo-deployment
-          requires:
-              - aws-eks/update-container-image
-  
-  
-  
-  
-  
-jobs:
     lint:
         docker:
             - image: httpd:2.4
