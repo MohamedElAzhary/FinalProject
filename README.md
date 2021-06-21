@@ -12,6 +12,7 @@ the Blue-Green deployment strategy.
 This project involves the following,
 - [x] Creating [Github](https://github.com/MohamedElAzhary/FinalProject/) repository with project code.
 - [x] Building a [Docker image](https://github.com/MohamedElAzhary/FinalProject/blob/master/Repo%20Building.PNG?raw=true) of the apache server hosting the website.
+- [x] Pushing [Docker image]() to DockerHub
 - [x] Use [DockerHub](https://hub.docker.com/r/moazario/siteimage) image repository to store Docker images.
 - [x] Dockerfile is linted [successfully](https://github.com/MohamedElAzhary/FinalProject/blob/master/lint%20successfully.PNG?raw=true) using Hadolint on CircleCI.
 - [x] [Blue-Green](https://github.com/MohamedElAzhary/FinalProject/blob/master/bluegreen.PNG?raw=true) deployment is done using Cloudformation script.
@@ -42,3 +43,5 @@ when it starts serving clients requests, this will achieve high operability and 
 - CircleCI is used to lint the code
 - CircleCI is used to deploy the code after adding 
   security keys to environment variables in CircleCI project settings.
+- CircleCI is used to deploy the basic infrastructure {Security Groups, Load-Balancer, VPC, ... etc.}
+- CircleCI is used to deploy EC2 server hosting Kubernetes cluster
