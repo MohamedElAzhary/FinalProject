@@ -75,9 +75,7 @@ workflows:
       - buildandpush:
             requires: [lint]
       #- deploy:
-            #requires: [buildandpush]
-      - aws-eks/create-cluster:
-          cluster-name: eks-demo-deployment
+            #requires: [buildandpush]1
       - create-deployment:
           cluster-name: eks-demo-deployment
           requires:
