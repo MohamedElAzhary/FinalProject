@@ -28,8 +28,19 @@ workflows:
           cluster-name: eks-demo-deployment
           requires:
             - aws-eks/create-cluster
+      - aws-eks/update-container-image:
+          cluster-name: eks-demo-deployment
+          container-image-updates: 'nginx=nginx:1.9.1'
+          post-steps:
+            - kubernetes/delete-resource:
+                resource-names: nginx-deployment
+                resource-types: deployment
+                wait: true
+          record: true
+          requires:
+            - create-deployment
+          resource-name: deployment/nginx-deployment
       - aws-eks/delete-cluster:
           cluster-name: eks-demo-deployment
           requires:
-            #- aws-eks/update-container-image
-            - create-deployment
+            - aws-eks/update-container-image
