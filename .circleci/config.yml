@@ -1,6 +1,35 @@
 version: 2.1
 orbs:
   docker: circleci/docker@1.6.0
+  aws-eks: circleci/aws-eks@x.y
+  kubernetes: circleci/kubernetes@0.4.0
+
+jobs:
+
+workflows:
+  deployment:
+    jobs:
+      - aws-eks/create-cluster:
+          cluster-name: eks-demo-deployment
+      - create-deployment:
+          cluster-name: eks-demo-deployment
+          requires:
+            - aws-eks/create-cluster
+      - aws-eks/update-container-image:
+          cluster-name: eks-demo-deployment
+          resource-name: "deployment/nginx-deployment"
+          container-image-updates: "nginx=nginx:1.9.1"
+          record: true
+          requires:
+            - create-deployment
+      - aws-eks/delete-cluster:
+          cluster-name: eks-demo-deployment
+          requires:
+              - aws-eks/update-container-image
+  
+  
+  
+  
   
 jobs:
     lint:
@@ -43,6 +72,27 @@ jobs:
                 working_directory: ~/repo
                 command: |
                     apt-get update && apt-get install make unzip awscli wget -y && make installBase && bash bluegreen.sh
+
+    createdeployment:
+        executor: aws-eks/python3
+        parameters:
+          cluster-name:
+            description: |
+              Name of the EKS cluster
+            type: string
+        steps:
+          - checkout
+          - aws-eks/update-kubeconfig-with-authenticator:
+              cluster-name: << parameters.cluster-name >>
+              install-kubectl: true
+          - kubernetes/create-or-update-resource:
+              resource-file-path: "tests/nginx-deployment/deployment.yaml"
+              resource-name: "deployment/nginx-deployment"
+              get-rollout-status: true
+              show-kubectl-command: true
+
+
+
             
             
 workflows:
@@ -53,3 +103,25 @@ workflows:
             requires: [lint]
       - deploy:
             requires: [buildandpush]
+      - aws-eks/create-cluster:
+          cluster-name: eks-demo-deployment
+      - createdeployment:
+          cluster-name: eks-demo-deployment
+          requires:
+            - aws-eks/create-cluster
+      - aws-eks/update-container-image:
+          cluster-name: eks-demo-deployment
+          container-image-updates: 'nginx=nginx:1.9.1'
+          post-steps:
+            - kubernetes/delete-resource:
+                resource-names: nginx-deployment
+                resource-types: deployment
+                wait: true
+          record: true
+          requires:
+            - create-deployment
+          resource-name: deployment/nginx-deployment
+      - aws-eks/delete-cluster:
+          cluster-name: eks-demo-deployment
+          requires:
+            - aws-eks/update-container-image
